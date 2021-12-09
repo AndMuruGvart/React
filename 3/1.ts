@@ -1,6 +1,7 @@
 
+type Str=string;
 
-function concat(first: string, second:string):string {
+function concat(first: string, second:string):Str {
     return first+second;
 };
 

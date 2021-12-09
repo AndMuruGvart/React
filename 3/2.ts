@@ -1,12 +1,12 @@
 interface MyInterface {
     howIDoIt: string,
-    someArray:(string | number)[],
-    withData: { 
-        howIDoIt:string,
-        someArray:[string, number],
-     }[],
+    someArray: Array<string | number>,
+    withData: Array<{
+        howIDoIt: string,
+        someArray: Array<string | number>
+    }>
+}
 
-};
 
 const MyHomeTask: MyInterface  = {
 
