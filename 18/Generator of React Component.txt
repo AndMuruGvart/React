@@ -1,3 +1,0 @@
-https://github.com/TaoriYu/generator-react-ts-component-dir
-
-yo react-ts-component-dir [component_name] [path] [--styles] [--less] [--sass]
