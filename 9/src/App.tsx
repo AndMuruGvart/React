@@ -14,13 +14,21 @@ import {  UserContextProvider } from "./shared/Context/userContext";
 import { PostsContextProvider } from "./shared/Context/postsContext";
 import { Posts } from "./shared/Posts";
 import { commentContext } from "./shared/Context/commentContext";
+import { replyContext } from "./shared/Context/replyContext";
 
 function AppComponent() {
     const [token]=useToken();
     const [commentValue, setCommentValue]=useState('');
+    const [replyValue, setReplyValue]=useState('');
     const CommentProvider =commentContext.Provider;
+    const ReplyProvider =replyContext.Provider;
 
      return (
+
+        <ReplyProvider value={{
+            value:replyValue,
+            onChange: setReplyValue,
+        }}>
          <CommentProvider value={{
              value:commentValue,
              onChange: setCommentValue,
@@ -44,6 +52,7 @@ function AppComponent() {
             </UserContextProvider>
         </tokenContext.Provider>
          </CommentProvider>
+         </ReplyProvider>
 
        
     );

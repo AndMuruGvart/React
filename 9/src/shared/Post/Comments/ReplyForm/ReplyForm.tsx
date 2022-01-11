@@ -8,7 +8,7 @@ interface IReply {
   onClose?: () => void;
 }
 
-export function ReplyForm(this: any, props:IReply) {
+export function ReplyFormControlled(props:IReply) {
 
   const ref=useRef<HTMLDivElement>(null);
 
@@ -48,5 +48,38 @@ export function ReplyForm(this: any, props:IReply) {
     </form>
     </div>
   ), node);
+  }
+
+  export function ReplyFormUncontrolled(props:IReply) {
+
+    const ref=useRef<HTMLDivElement>(null);
+  
+    useEffect(() => {
+      function handleClick(event:MouseEvent) {
+        if (event.target instanceof Node && !ref.current?.contains(event.target)) {
+          props.onClose?.();
+        }
+      }
+  
+      document.addEventListener('click', handleClick) 
+      return () => {
+        document.removeEventListener('click', handleClick); 
+      }
+    }, [])
+    
+    const node = document.querySelector('#answer_root');
+    if (!node) return null;
+  
+      
+    
+    return ReactDOM.createPortal ((
+      <div ref={ref}>
+        <form className={styles.form} > 
+         <textarea  ref={input => input && input.focus()} className={styles.input}  /> 
+         <button type='submit' className={styles.button}>Ответить</button>
+      </form>
+      </div>
+    ), node);
 }
+
 

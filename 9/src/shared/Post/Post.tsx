@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import { CommentForm } from '../CommentForm';
+import { CommentForm, CommentForm2 } from '../CommentForm';
 import { Comments } from './Comments';
 import styles from './post.css';
 

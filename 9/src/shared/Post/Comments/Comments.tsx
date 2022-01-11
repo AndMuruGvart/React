@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { CommentForm } from '../../CommentForm';
 import { CommentIcon } from '../../Icons/Comments';
 import { CommentsIcon } from '../../Icons/CommentsIcon';
 import { ShareIcon } from '../../Icons/ShareIcon';
 import { WarningIcon } from '../../Icons/WarningIcon';
 import { Text, EColor } from '../../Text';
 import styles from './comments.css';
-import { ReplyForm } from './ReplyForm';
+import { ReplyFormControlled, ReplyFormUncontrolled } from './ReplyForm';
 
 
 export function Comments() {
@@ -36,7 +37,7 @@ export function Comments() {
             <li className={styles.menuItem}  >
               <CommentsIcon/>
               <Text size={12} color={EColor.grey66}>
-                <a href='#' className={styles.replyLink} onClick={(e)=>{setIsReply(true); e.stopPropagation(); e.preventDefault();}}>Ответить </a>
+                <a href='#' className={styles.replyLink} onClick={(e)=>{setIsReply(true); ReplyFormControlled}}>Ответить </a>
               </Text>
             </li>
             <li className={styles.menuItem}>
@@ -53,7 +54,7 @@ export function Comments() {
      </div>
      <div id="answer_root" >
      {isReply && (
-              <ReplyForm  onClose={()=> {setIsReply(false)}}/> 
+              <ReplyFormControlled  onClose={()=> {setIsReply(false)}}/> 
             )
             }
      </div>
